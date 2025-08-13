@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Kapunka',
   
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'your-project-id-here',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'hqs5j1qe',
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
 
   plugins: [
