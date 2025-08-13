@@ -1,0 +1,10 @@
+{
+  "/api/health/route": "app/api/health/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/method/page": "app/method/page.js",
+  "/origin/page": "app/origin/page.js",
+  "/page": "app/page.js",
+  "/professionals/page": "app/professionals/page.js",
+  "/shop/page": "app/shop/page.js"
+}
