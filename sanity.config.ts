@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Kapunka',
   
-  projectId: 'hqs5j1qe', // Replace with your actual Project ID
-  dataset: 'production', // Replace with your dataset name if different
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'your-project-id-here',
+  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
 
   plugins: [
     deskTool(),
