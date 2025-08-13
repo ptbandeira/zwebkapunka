@@ -11,18 +11,9 @@ https://nextjs.org/telemetry
 > Ready on http://0.0.0.0:3000
 > Socket.IO server running at ws://0.0.0.0:3000/api/socketio
  ○ Compiling / ...
- ⚠ ./src/app/layout.tsx
-Attempted import error: '@/components/navigation/Navigation' does not contain a default export (imported as 'Navigation').
-
-Import trace for requested module:
-./src/app/layout.tsx
-
-./src/app/layout.tsx
-Attempted import error: '@/components/footer/Footer' does not contain a default export (imported as 'Footer').
-
-Import trace for requested module:
-./src/app/layout.tsx
- ⨯ [Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.] {
-  digest: '58291244'
-}
- GET / 500 in 7225ms
+ ✓ Compiled / in 10.3s (786 modules)
+ GET / 200 in 11102ms
+ GET / 200 in 28ms
+ ○ Compiling /shop ...
+ ✓ Compiled /shop in 763ms (756 modules)
+ GET /shop 200 in 962ms

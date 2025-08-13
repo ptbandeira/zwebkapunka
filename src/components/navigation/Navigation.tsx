@@ -1,131 +1,83 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import Link from 'next/link'
+import { useState } from 'react'
 
-export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/method", label: "The Method" },
-    { href: "/shop", label: "Shop" },
-    { href: "/professionals", label: "Professionals" },
-    { href: "/origin", label: "Origin" },
-  ];
+export default function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-taupe-light/20">
-      <div className="container mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex items-center justify-between h-20">
+    <nav className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 border border-charcoal/20 rounded-full flex items-center justify-center">
-              <span className="text-xl font-serif text-charcoal">K</span>
-            </div>
-            <span className="text-xl font-serif text-charcoal tracking-wide">Kapunka</span>
-          </Link>
+          <div className="flex-shrink-0">
+            <Link href="/" className="text-2xl font-light tracking-wide">
+              Kapunka
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-12">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-charcoal hover:text-gold-rich transition-colors font-light tracking-wide text-sm uppercase"
-              >
-                {item.label}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <Link href="/" className="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium uppercase tracking-wide">
+                Home
               </Link>
-            ))}
+              <Link href="/method" className="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium uppercase tracking-wide">
+                Method
+              </Link>
+              <Link href="/shop" className="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium uppercase tracking-wide">
+                Shop
+              </Link>
+              <Link href="/professionals" className="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium uppercase tracking-wide">
+                Professionals
+              </Link>
+              <Link href="/origin" className="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium uppercase tracking-wide">
+                Origin
+              </Link>
+            </div>
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <Button 
-              variant="ghost" 
-              className="text-charcoal hover:text-gold-rich font-light tracking-wide text-sm uppercase"
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-gray-600 focus:outline-none"
             >
-              Contact
-            </Button>
-            <Button 
-              variant="outline" 
-              className="border-charcoal text-charcoal hover:bg-charcoal hover:text-white rounded-none px-6 py-2 font-light tracking-wide text-sm uppercase"
-            >
-              Shop
-            </Button>
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6 text-charcoal" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between mb-12">
-                  <Link 
-                    href="/" 
-                    className="flex items-center space-x-3"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <div className="w-10 h-10 border border-charcoal/20 rounded-full flex items-center justify-center">
-                      <span className="text-xl font-serif text-charcoal">K</span>
-                    </div>
-                    <span className="text-xl font-serif text-charcoal tracking-wide">Kapunka</span>
-                  </Link>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <X className="h-6 w-6 text-charcoal" />
-                    <span className="sr-only">Close menu</span>
-                  </Button>
-                </div>
-
-                <nav className="flex-1">
-                  <ul className="space-y-6">
-                    {navItems.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="block text-lg font-light text-charcoal hover:text-gold-rich transition-colors py-2 tracking-wide"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-
-                <div className="space-y-4 pt-8 border-t border-taupe-light/20">
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start text-charcoal hover:text-gold-rich font-light tracking-wide text-sm uppercase"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Contact
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-charcoal text-charcoal hover:bg-charcoal hover:text-white rounded-none px-6 py-3 font-light tracking-wide text-sm uppercase"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Shop
-                  </Button>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <Link href="/" className="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium uppercase tracking-wide">
+                Home
+              </Link>
+              <Link href="/method" className="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium uppercase tracking-wide">
+                Method
+              </Link>
+              <Link href="/shop" className="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium uppercase tracking-wide">
+                Shop
+              </Link>
+              <Link href="/professionals" className="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium uppercase tracking-wide">
+                Professionals
+              </Link>
+              <Link href="/origin" className="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium uppercase tracking-wide">
+                Origin
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
-  );
+  )
 }
