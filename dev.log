@@ -3,17 +3,19 @@
 [33m[nodemon] watching path(s): server.ts src/**/*[39m
 [33m[nodemon] watching extensions: ts,tsx,js,jsx[39m
 [32m[nodemon] starting `npx tsx server.ts`[39m
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
 > Ready on http://0.0.0.0:3000
 > Socket.IO server running at ws://0.0.0.0:3000/api/socketio
  ○ Compiling / ...
- ✓ Compiled / in 10.3s (786 modules)
- GET / 200 in 11102ms
- GET / 200 in 28ms
- ○ Compiling /shop ...
- ✓ Compiled /shop in 763ms (756 modules)
- GET /shop 200 in 962ms
+ ✓ Compiled / in 7.6s (863 modules)
+ ⨯ TypeError: (0 , react__WEBPACK_IMPORTED_MODULE_1__.createContext) is not a function
+    at __webpack_require__ (.next/server/webpack-runtime.js:33:42)
+    at __webpack_require__ (.next/server/webpack-runtime.js:33:42)
+    at __webpack_require__ (.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/page.tsx:7:75)
+    at <unknown> (rsc)/./src/app/page.tsx (/workspaces/zwebkapunka/.next/server/app/page.js:96:1)
+    at Function.__webpack_require__ (.next/server/webpack-runtime.js:33:42) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.7s (1163 modules)
+ GET / 500 in 12841ms
