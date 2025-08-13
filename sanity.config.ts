@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Kapunka',
   
-  projectId: 'your-project-id', // We'll get this in Step 3
-  dataset: 'production',
+  projectId: 'hqs5j1qe', // Replace with your actual Project ID
+  dataset: 'production', // Replace with your dataset name if different
 
   plugins: [
     deskTool(),
