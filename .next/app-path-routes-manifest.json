@@ -1,10 +1,10 @@
 {
-  "/api/health/route": "/api/health",
   "/_not-found/page": "/_not-found",
+  "/api/health/route": "/api/health",
   "/favicon.ico/route": "/favicon.ico",
   "/method/page": "/method",
-  "/origin/page": "/origin",
-  "/page": "/",
   "/professionals/page": "/professionals",
-  "/shop/page": "/shop"
+  "/shop/page": "/shop",
+  "/origin/page": "/origin",
+  "/page": "/"
 }

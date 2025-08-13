@@ -1,0 +1,22 @@
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): server.ts src/**/*[39m
+[33m[nodemon] watching extensions: ts,tsx,js,jsx[39m
+[32m[nodemon] starting `npx tsx server.ts`[39m
+> Ready on http://0.0.0.0:3000
+> Socket.IO server running at ws://0.0.0.0:3000/api/socketio
+ ○ Compiling / ...
+ ✓ Compiled / in 9.4s (948 modules)
+ GET / 200 in 10020ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1017ms (533 modules)
+ GET /favicon.ico 200 in 1261ms
+ ○ Compiling /method ...
+ ✓ Compiled /method in 1127ms (943 modules)
+ GET /method 200 in 1269ms
+ ✓ Compiled /shop in 338ms (945 modules)
+ GET /shop 200 in 460ms
+ ○ Compiling /professionals ...
+ ✓ Compiled /professionals in 516ms (960 modules)
+ GET /professionals 200 in 848ms
+ GET /method 200 in 53ms
