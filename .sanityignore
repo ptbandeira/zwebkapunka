@@ -1,0 +1,23 @@
+# Exclude Next.js specific configurations
+postcss.config.mjs
+tailwind.config.ts
+next.config.ts
+tsconfig.json
+
+# Exclude build directories
+.next/
+dist/
+out/
+
+# Exclude environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep Sanity-related files
+!sanity.config.ts
+!sanity.cli.ts
+!schemas/
+!src/lib/sanity/
+!postcss.sanity.config.mjs
