@@ -2,6 +2,8 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import SearchBar from '@/components/navigation/SearchBar'
+import MiniCart from '@/components/navigation/MiniCart'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -39,5 +41,13 @@ Builder.registerComponent(ProductCard, {
       ],
     },
   ],
+})
+
+Builder.registerComponent(SearchBar, {
+  name: 'SearchBar',
+})
+
+Builder.registerComponent(MiniCart, {
+  name: 'MiniCart',
 })
 
