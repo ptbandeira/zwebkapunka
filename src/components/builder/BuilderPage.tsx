@@ -1,44 +1,37 @@
-import { BuilderComponent, builder } from '@builder.io/react'
-import { cache } from 'react'
-
-// Initialize Builder with environment variable if available
-const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY
-
-if (apiKey) {
-  builder.init(apiKey)
-} else {
-  console.warn(
-    'NEXT_PUBLIC_BUILDER_API_KEY is not defined. Builder content will not be loaded.'
-  )
-}
+import BuilderContent from "./BuilderContent";
 
 export interface BuilderPageProps {
-  model?: string
-  /**
-   * Optional pre-fetched content. When provided, the component will render
-   * this content directly and avoid an additional network request.
-   */
-  content?: any
-  /**
-   * Path to fetch content for. Defaults to '/'.
-   */
-  urlPath?: string
+  model?: string;
+  /** Optional pre-fetched content to avoid a client-side request. */
+  content?: any;
+  /** Path to fetch content for. Defaults to '/'. */
+  urlPath?: string;
 }
 
-// Cache Builder content fetches to preserve performance across re-renders
-export const getBuilderContent = cache(
-  async (model: string, urlPath: string) => {
-    return await builder.get(model, { url: urlPath }).toPromise()
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY;
+
+export async function getBuilderContent(model: string, urlPath: string) {
+  if (!apiKey) return null;
+  try {
+    const res = await fetch(
+      `https://cdn.builder.io/api/v2/content/${model}?apiKey=${apiKey}&url=${encodeURIComponent(urlPath)}`,
+      { next: { revalidate: 60 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.results?.[0] ?? null;
+  } catch (err) {
+    console.warn("Failed to fetch Builder content:", err);
+    return null;
   }
-)
+}
 
 export default async function BuilderPage({
-  model = 'page',
+  model = "page",
   content,
-  urlPath = '/',
+  urlPath = "/",
 }: BuilderPageProps) {
-  const pageContent =
-    apiKey != null ? content ?? (await getBuilderContent(model, urlPath)) : null
+  const pageContent = apiKey ? content ?? (await getBuilderContent(model, urlPath)) : null;
 
   if (!pageContent) {
     return (
@@ -68,8 +61,8 @@ export default async function BuilderPage({
           </div>
         </div>
       </div>
-    )
+    );
   }
 
-  return <BuilderComponent model={model} content={pageContent} />
+  return <BuilderContent model={model} content={pageContent} />;
 }

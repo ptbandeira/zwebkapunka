@@ -1,23 +1,13 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/footer/Footer";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-dm-serif-display",
-});
-
 export const metadata: Metadata = {
   title: "Kapunka | Quiet strength. Pure care.",
-  description: "Discover Kapunka's signature method of quiet strength and pure care through our carefully crafted formulations.",
+  description:
+    "Discover Kapunka's signature method of quiet strength and pure care through our carefully crafted formulations.",
 };
 
 export default function RootLayout({
@@ -27,10 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body 
-        className={`${inter.variable} ${dmSerifDisplay.variable} antialiased bg-background text-foreground`}
-        suppressHydrationWarning
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased bg-background text-foreground" suppressHydrationWarning>
         <div className="min-h-screen flex flex-col" suppressHydrationWarning>
           <Navigation />
           <main className="flex-1" suppressHydrationWarning>
