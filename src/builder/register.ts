@@ -3,6 +3,8 @@ import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
 import Hero from '@/components/hero/Hero'
+import SearchBar from '@/components/navigation/SearchBar'
+import MiniCart from '@/components/navigation/MiniCart'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -49,5 +51,13 @@ Builder.registerComponent(Hero, {
     { name: 'heading', type: 'string' },
     { name: 'subheading', type: 'string' },
   ],
+})
+
+Builder.registerComponent(SearchBar, {
+  name: 'SearchBar',
+})
+
+Builder.registerComponent(MiniCart, {
+  name: 'MiniCart',
 })
 
