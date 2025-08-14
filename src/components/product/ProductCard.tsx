@@ -1,12 +1,32 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "@/hooks/use-cart";
+
+export interface Product {
+  id: string;
+  name: string;
+  size: string;
+  description: string;
+  details: string;
+  price: string;
+  features: string[];
+  bestFor: string;
+  image?: string;
+  isProfessional?: boolean;
+  isHospitality?: boolean;
+  isNew?: boolean;
+  isBestseller?: boolean;
+}
 import { Heart, Check } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/hooks/use-cart";
 import type { Product } from "@/types/product";
+main
 
 interface ProductCardProps {
   product: Product;
@@ -14,14 +34,17 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className = "" }: ProductCardProps) {
+  const { addItem, addToWishlist, removeFromWishlist, wishlist } = useCart();
+  const inWishlist = wishlist.some((item) => item.id === product.id);
+
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
-
   const handleAdd = () => {
     addItem(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };
+  main
 
   return (
     <Card className={`border-taupe-light bg-white hover:shadow-lg transition-shadow ${className}`}>
@@ -112,21 +135,55 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
           <p className="text-sm text-muted-foreground">{product.bestFor}</p>
         </div>
 
+
+        <div className="text-center">
+          <p className="text-2xl font-serif text-foreground mb-4">
+            {product.price}
+          </p>
+          <div className="space-y-2">
+            <Button
+              className="w-full bg-gold-rich hover:bg-gold-light text-white"
+              size="lg"
+              onClick={() => addItem(product)
+              {product.price.includes("Contact") ? "Inquire Now" : "Add to Cart"}
+            </Button>
+            <Button
+              className={`w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white ${
+                inWishlist ? "bg-gold-rich text-white" : ""
+              }`}
+              variant="outline"
+              onClick={() =>
+                inWishlist
+                  ? removeFromWishlist(product.id)
+                  : addToWishlist(product)
+              }
+            >
+              {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white"
+              asChild
+            >
+              <Link href={`/shop/${product.id}`}>View Details</Link>
+            </Button>
+          </div>
         <div className="text-center space-y-2">
           <Button
             onClick={handleAdd}
             className="w-full bg-gold-rich hover:bg-gold-light text-white"
             size="lg"
-          >
+          
             {added ? <Check className="w-5 h-5" /> : "ADD TO CART"}
           </Button>
           <Button
             variant="outline"
             className="w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white"
             asChild
-          >
+          
             <Link href={`/shop/${product.id}`}>View Details</Link>
           </Button>
+main
         </div>
       </CardContent>
     </Card>
@@ -159,77 +216,3 @@ export function ProductFeature({ icon, title, description, className = "" }: Pro
   return (
     <div className={`flex items-start space-x-4 ${className}`}>
       <div className="flex-shrink-0">
-        <div className="w-12 h-12 bg-gold-light rounded-full flex items-center justify-center">
-          {icon}
-        </div>
-      </div>
-      <div>
-        <h3 className="text-lg font-serif text-foreground mb-2">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
-      </div>
-    </div>
-  );
-}
-
-interface ProductComparisonProps {
-  products: Product[];
-  className?: string;
-}
-
-export function ProductComparison({ products, className = "" }: ProductComparisonProps) {
-  return (
-    <div className={`overflow-x-auto ${className}`}>
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="border-b border-taupe-light">
-            <th className="text-left py-4 px-4 font-serif text-foreground">Feature</th>
-            {products.map((product) => (
-              <th key={product.id} className="text-center py-4 px-4 font-serif text-foreground">
-                {product.size}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="border-b border-taupe-light">
-            <td className="py-3 px-4 text-muted-foreground">Size</td>
-            {products.map((product) => (
-              <td key={product.id} className="text-center py-3 px-4 text-foreground">
-                {product.size}
-              </td>
-            ))}
-          </tr>
-          <tr className="border-b border-taupe-light">
-            <td className="py-3 px-4 text-muted-foreground">Best For</td>
-            {products.map((product) => (
-              <td key={product.id} className="text-center py-3 px-4 text-sm text-muted-foreground">
-                {product.bestFor}
-              </td>
-            ))}
-          </tr>
-          <tr className="border-b border-taupe-light">
-            <td className="py-3 px-4 text-muted-foreground">Price</td>
-            {products.map((product) => (
-              <td key={product.id} className="text-center py-3 px-4 font-serif text-foreground">
-                {product.price}
-              </td>
-            ))}
-          </tr>
-          <tr>
-            <td className="py-3 px-4 text-muted-foreground">Action</td>
-            {products.map((product) => (
-              <td key={product.id} className="text-center py-3 px-4">
-                <Button 
-                  size="sm"
-                  className="bg-gold-rich hover:bg-gold-light text-white"
-                >
-                  {product.price.includes("Contact") ? "Inquire" : "Add to Cart"}
-                </Button>
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-}
