@@ -2,16 +2,8 @@
 
 import '@/builder/register'
 import { useState, useEffect } from 'react'
-import { BuilderComponent, builder } from '@builder.io/react'
-
-// Initialize Builder with environment variable
-const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY
-
-if (!apiKey) {
-  throw new Error('NEXT_PUBLIC_BUILDER_API_KEY is not defined')
-}
-
-builder.init(apiKey)
+import { BuilderComponent } from '@builder.io/react'
+import builder from '@/lib/builder/client'
 
 interface BuilderPageProps {
   model?: string

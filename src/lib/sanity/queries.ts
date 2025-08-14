@@ -1,29 +1,5 @@
 import { client } from './client'
 
-// Homepage queries
-export async function getHomepage() {
-  return client.fetch(`
-    *[_type == "homepage"][0] {
-      title,
-      subtitle,
-      heroSection {
-        headline,
-        description,
-        ctaText,
-        ctaLink
-      },
-      featuredProducts[]->{
-        name,
-        slug,
-        price,
-        description,
-        images,
-        category
-      }
-    }
-  `)
-}
-
 // Product queries
 export async function getAllProducts() {
   return client.fetch(`

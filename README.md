@@ -95,6 +95,15 @@ src/
 └── lib/                # Utility functions and configurations
 ```
 
+## 📝 Content Workflow
+
+This project uses two content management systems with clearly separated roles:
+
+- **Builder.io** – Owns all marketing pages such as the home, method, origin and professionals pages. Non‑developers can update these pages visually by logging into Builder.io and editing the corresponding page models.
+- **Sanity** – Stores the product catalog. Product details are managed in Sanity Studio by running `npm run sanity` locally or using the hosted studio. Create, edit and publish products there to update the shop.
+
+This separation keeps marketing content independent from product data. Edit each piece in its respective CMS and redeploy the site to reflect changes.
+
 ## 🎨 Available Features & Components
 
 This scaffold includes a comprehensive set of modern web development tools:
