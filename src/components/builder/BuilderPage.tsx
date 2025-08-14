@@ -3,15 +3,16 @@
 import '@/builder/register'
 import { useState, useEffect } from 'react'
 import { BuilderComponent } from '@builder.io/react'
+import type { BuilderContent } from '@builder.io/sdk'
 import builder from '@/lib/builder/client'
 
 interface BuilderPageProps {
   model?: string
-  content?: any
+  content?: BuilderContent
 }
 
 export default function BuilderPage({ model = 'page', content }: BuilderPageProps) {
-  const [pageContent, setPageContent] = useState(content)
+  const [pageContent, setPageContent] = useState<BuilderContent | null>(content ?? null)
   const [loading, setLoading] = useState(!content)
 
   useEffect(() => {
@@ -80,5 +81,5 @@ export default function BuilderPage({ model = 'page', content }: BuilderPageProp
     )
   }
 
-  return <BuilderComponent model={model} content={pageContent} />
+  return <BuilderComponent model={model} content={pageContent || undefined} />
 }
