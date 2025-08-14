@@ -70,6 +70,16 @@ npm run build
 npm start
 ```
 
+## Environment Setup
+
+Copy the example environment file and supply your own values:
+
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` and set `NEXT_PUBLIC_BUILDER_API_KEY` to your Builder.io private key.
+
 Open [http://localhost:3000](http://localhost:3000) to see your application running.
 
 ## 🤖 Powered by Z.ai
