@@ -1,7 +1,10 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useCart } from "@/hooks/use-cart";
 
 export interface Product {
   id: string;
@@ -25,6 +28,9 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className = "" }: ProductCardProps) {
+  const { addItem, addToWishlist, removeFromWishlist, wishlist } = useCart();
+  const inWishlist = wishlist.some((item) => item.id === product.id);
+
   return (
     <Card className={`border-taupe-light bg-white hover:shadow-lg transition-shadow ${className}`}>
       <CardHeader className="text-center pb-4">
@@ -104,14 +110,28 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
             {product.price}
           </p>
           <div className="space-y-2">
-            <Button 
+            <Button
               className="w-full bg-gold-rich hover:bg-gold-light text-white"
               size="lg"
+              onClick={() => addItem(product)}
             >
               {product.price.includes("Contact") ? "Inquire Now" : "Add to Cart"}
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              className={`w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white ${
+                inWishlist ? "bg-gold-rich text-white" : ""
+              }`}
+              variant="outline"
+              onClick={() =>
+                inWishlist
+                  ? removeFromWishlist(product.id)
+                  : addToWishlist(product)
+              }
+            >
+              {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+            </Button>
+            <Button
+              variant="outline"
               className="w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white"
               asChild
             >
@@ -168,6 +188,7 @@ interface ProductComparisonProps {
 }
 
 export function ProductComparison({ products, className = "" }: ProductComparisonProps) {
+  const { addItem } = useCart();
   return (
     <div className={`overflow-x-auto ${className}`}>
       <table className="w-full border-collapse">
@@ -210,9 +231,10 @@ export function ProductComparison({ products, className = "" }: ProductCompariso
             <td className="py-3 px-4 text-muted-foreground">Action</td>
             {products.map((product) => (
               <td key={product.id} className="text-center py-3 px-4">
-                <Button 
+                <Button
                   size="sm"
                   className="bg-gold-rich hover:bg-gold-light text-white"
+                  onClick={() => addItem(product)}
                 >
                   {product.price.includes("Contact") ? "Inquire" : "Add to Cart"}
                 </Button>

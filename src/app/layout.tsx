@@ -3,6 +3,7 @@ import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/footer/Footer";
+import { CartProvider } from "@/hooks/use-cart";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,17 +28,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body 
+      <body
         className={`${inter.variable} ${dmSerifDisplay.variable} antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen flex flex-col" suppressHydrationWarning>
-          <Navigation />
-          <main className="flex-1" suppressHydrationWarning>
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="min-h-screen flex flex-col" suppressHydrationWarning>
+            <Navigation />
+            <main className="flex-1" suppressHydrationWarning>
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
