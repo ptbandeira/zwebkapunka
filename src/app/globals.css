@@ -1,14 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-open-sans);
+  --font-serif: var(--font-montserrat);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -39,14 +39,6 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-gold-light: var(--gold-light);
-  --color-gold-rich: var(--gold-rich);
-  --color-sage-taupe: var(--sage-taupe);
-  --color-charcoal: var(--charcoal);
-  --color-taupe-light: var(--taupe-light);
-  --color-sand-warm: var(--sand-warm);
-  --color-olive-deep: var(--olive-deep);
-  --color-brown-rich: var(--brown-rich);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -55,87 +47,74 @@
 
 :root {
   --radius: 0.625rem;
-  --font-inter: 'Inter', sans-serif;
-  --font-dm-serif: 'DM Serif Display', serif;
-  
-  /* Kapunka Brand Colors - Golden Hour Palette */
-  --gold-light: #C9B98F;
-  --gold-rich: #B89D62;
-  --sage-taupe: #88856A;
-  --charcoal: #474747;
-  
-  /* Kapunka Brand Colors - Earthen Elegance Palette */
-  --taupe-light: #D8CBC2;
-  --sand-warm: #A18267;
-  --olive-deep: #3B3418;
-  --brown-rich: #2D241B;
-  
-  /* Color System - 70% light neutrals, 20% deep neutral, 10% accents */
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+
   --background: #FFFFFF;
-  --foreground: var(--charcoal);
+  --foreground: #333333;
   --card: #FFFFFF;
-  --card-foreground: var(--charcoal);
+  --card-foreground: #333333;
   --popover: #FFFFFF;
-  --popover-foreground: var(--charcoal);
-  --primary: var(--gold-rich);
-  --primary-foreground: #FFFFFF;
-  --secondary: var(--taupe-light);
-  --secondary-foreground: var(--charcoal);
-  --muted: var(--taupe-light);
-  --muted-foreground: var(--sage-taupe);
-  --accent: var(--gold-light);
-  --accent-foreground: var(--charcoal);
-  --destructive: #8B4513;
-  --border: var(--taupe-light);
-  --input: var(--taupe-light);
-  --ring: var(--gold-rich);
-  --chart-1: var(--gold-rich);
-  --chart-2: var(--sage-taupe);
-  --chart-3: var(--sand-warm);
-  --chart-4: var(--olive-deep);
-  --chart-5: var(--brown-rich);
+  --popover-foreground: #333333;
+  --primary: #D4AF37;
+  --primary-foreground: #333333;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #333333;
+  --muted: #F0F0F0;
+  --muted-foreground: #666666;
+  --accent: #D4AF37;
+  --accent-foreground: #333333;
+  --destructive: #B00020;
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #D4AF37;
+  --chart-1: #D4AF37;
+  --chart-2: #333333;
+  --chart-3: #999999;
+  --chart-4: #666666;
+  --chart-5: #000000;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: var(--charcoal);
-  --sidebar-primary: var(--gold-rich);
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: var(--taupe-light);
-  --sidebar-accent-foreground: var(--charcoal);
-  --sidebar-border: var(--taupe-light);
-  --sidebar-ring: var(--gold-rich);
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #D4AF37;
+  --sidebar-primary-foreground: #333333;
+  --sidebar-accent: #F5F5F5;
+  --sidebar-accent-foreground: #333333;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #D4AF37;
 }
 
 .dark {
-  --background: var(--brown-rich);
-  --foreground: var(--taupe-light);
-  --card: var(--charcoal);
-  --card-foreground: var(--taupe-light);
-  --popover: var(--charcoal);
-  --popover-foreground: var(--taupe-light);
-  --primary: var(--gold-light);
-  --primary-foreground: var(--brown-rich);
-  --secondary: var(--olive-deep);
-  --secondary-foreground: var(--taupe-light);
-  --muted: var(--olive-deep);
-  --muted-foreground: var(--sage-taupe);
-  --accent: var(--sand-warm);
-  --accent-foreground: var(--brown-rich);
-  --destructive: #CD853F;
-  --border: var(--sage-taupe);
-  --input: var(--sage-taupe);
-  --ring: var(--gold-light);
-  --chart-1: var(--gold-light);
-  --chart-2: var(--sage-taupe);
-  --chart-3: var(--sand-warm);
-  --chart-4: var(--olive-deep);
-  --chart-5: var(--brown-rich);
-  --sidebar: var(--charcoal);
-  --sidebar-foreground: var(--taupe-light);
-  --sidebar-primary: var(--gold-light);
-  --sidebar-primary-foreground: var(--brown-rich);
-  --sidebar-accent: var(--olive-deep);
-  --sidebar-accent-foreground: var(--taupe-light);
-  --sidebar-border: var(--sage-taupe);
-  --sidebar-ring: var(--gold-light);
+  --background: #333333;
+  --foreground: #FFFFFF;
+  --card: #333333;
+  --card-foreground: #FFFFFF;
+  --popover: #333333;
+  --popover-foreground: #FFFFFF;
+  --primary: #D4AF37;
+  --primary-foreground: #333333;
+  --secondary: #444444;
+  --secondary-foreground: #FFFFFF;
+  --muted: #444444;
+  --muted-foreground: #CCCCCC;
+  --accent: #D4AF37;
+  --accent-foreground: #333333;
+  --destructive: #FF6666;
+  --border: #555555;
+  --input: #555555;
+  --ring: #D4AF37;
+  --chart-1: #D4AF37;
+  --chart-2: #FFFFFF;
+  --chart-3: #CCCCCC;
+  --chart-4: #999999;
+  --chart-5: #666666;
+  --sidebar: #333333;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #D4AF37;
+  --sidebar-primary-foreground: #333333;
+  --sidebar-accent: #444444;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #555555;
+  --sidebar-ring: #D4AF37;
 }
 
 @layer base {
@@ -149,31 +128,3 @@
     @apply font-serif;
   }
 }
-
-/* Custom utility classes for brand colors */
-.bg-gold-light { background-color: var(--gold-light); }
-.bg-gold-rich { background-color: var(--gold-rich); }
-.bg-sage-taupe { background-color: var(--sage-taupe); }
-.bg-charcoal { background-color: var(--charcoal); }
-.bg-taupe-light { background-color: var(--taupe-light); }
-.bg-sand-warm { background-color: var(--sand-warm); }
-.bg-olive-deep { background-color: var(--olive-deep); }
-.bg-brown-rich { background-color: var(--brown-rich); }
-
-.text-gold-light { color: var(--gold-light); }
-.text-gold-rich { color: var(--gold-rich); }
-.text-sage-taupe { color: var(--sage-taupe); }
-.text-charcoal { color: var(--charcoal); }
-.text-taupe-light { color: var(--taupe-light); }
-.text-sand-warm { color: var(--sand-warm); }
-.text-olive-deep { color: var(--olive-deep); }
-.text-brown-rich { color: var(--brown-rich); }
-
-.border-gold-light { border-color: var(--gold-light); }
-.border-gold-rich { border-color: var(--gold-rich); }
-.border-sage-taupe { border-color: var(--sage-taupe); }
-.border-charcoal { border-color: var(--charcoal); }
-.border-taupe-light { border-color: var(--taupe-light); }
-.border-sand-warm { border-color: var(--sand-warm); }
-.border-olive-deep { border-color: var(--olive-deep); }
-.border-brown-rich { border-color: var(--brown-rich); }
