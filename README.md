@@ -72,6 +72,11 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to see your application running.
 
+## 🧱 Builder.io Content
+
+Dynamic pages such as `/method`, `/origin`, `/professionals`, and `/shop` are served from [Builder.io](https://www.builder.io/).
+See [docs/builder/editing.md](docs/builder/editing.md) for instructions on seeding and editing content.
+
 ## 🤖 Powered by Z.ai
 
 This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
