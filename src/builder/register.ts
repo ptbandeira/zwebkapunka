@@ -2,17 +2,30 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+codex/import-new-components-for-builder
 import Hero from '@/components/hero/Hero'
 import CategoryScroller from '@/components/category/CategoryScroller'
 import AboutSection from '@/components/about/AboutSection'
+import AboutSection from '@/components/about/AboutSection'
+import CategoryScroller from '@/components/categories/CategoryScroller'
+import Hero from '@/components/hero/Hero'
+import SearchBar from '@/components/navigation/SearchBar'
+import MiniCart from '@/components/navigation/MiniCart'
+main
 
 // Register site-specific components with Builder.io
-Builder.registerComponent(Navigation, {
-  name: 'Navigation',
-})
+Builder.registerComponent(Navigation, { name: 'Navigation' })
 
-Builder.registerComponent(Footer, {
-  name: 'Footer',
+Builder.registerComponent(Footer, { name: 'Footer' })
+
+Builder.registerComponent(AboutSection, {
+  name: 'AboutSection',
+  inputs: [
+    { name: 'image', type: 'string', friendlyName: 'Image URL' },
+    { name: 'title', type: 'string' },
+    { name: 'body', type: 'longText' },
+    { name: 'parallax', type: 'boolean', defaultValue: false },
+  ],
 })
 
 Builder.registerComponent(ProductCard, {
@@ -46,6 +59,7 @@ Builder.registerComponent(ProductCard, {
   ],
 })
 
+codex/import-new-components-for-builder
 Builder.registerComponent(Hero, {
   name: 'Hero',
   inputs: [
@@ -57,6 +71,7 @@ Builder.registerComponent(Hero, {
   ],
 })
 
+ main
 Builder.registerComponent(CategoryScroller, {
   name: 'CategoryScroller',
   inputs: [
@@ -66,6 +81,7 @@ Builder.registerComponent(CategoryScroller, {
       subFields: [
         { name: 'title', type: 'string' },
         { name: 'image', type: 'string' },
+codex/import-new-components-for-builder
         { name: 'link', type: 'string' },
       ],
     },
@@ -81,3 +97,21 @@ Builder.registerComponent(AboutSection, {
   ],
 })
 
+      ],
+    },
+  ],
+})
+
+Builder.registerComponent(Hero, {
+  name: 'Hero',
+  inputs: [
+    { name: 'image', type: 'string' },
+    { name: 'heading', type: 'string' },
+    { name: 'subheading', type: 'string' },
+  ],
+})
+
+Builder.registerComponent(SearchBar, { name: 'SearchBar' })
+
+Builder.registerComponent(MiniCart, { name: 'MiniCart' })
+main
