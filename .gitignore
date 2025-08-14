@@ -1,4 +1,18 @@
 node_modules
 .next
+out
+dist
+
+# Log files
 dev.log
 server.log
+*.log
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Misc
+.DS_Store

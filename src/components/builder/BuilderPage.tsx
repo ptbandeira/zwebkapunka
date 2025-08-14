@@ -1,4 +1,5 @@
 import BuilderContent from "./BuilderContent";
+import { cache } from "react";
 
 export interface BuilderPageProps {
   model?: string;
@@ -10,7 +11,7 @@ export interface BuilderPageProps {
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY;
 
-export async function getBuilderContent(model: string, urlPath: string) {
+export const getBuilderContent = cache(async (model: string, urlPath: string) => {
   if (!apiKey) return null;
   try {
     const res = await fetch(
@@ -24,7 +25,7 @@ export async function getBuilderContent(model: string, urlPath: string) {
     console.warn("Failed to fetch Builder content:", err);
     return null;
   }
-}
+});
 
 export default async function BuilderPage({
   model = "page",
