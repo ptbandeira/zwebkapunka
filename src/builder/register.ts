@@ -2,6 +2,7 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import CategoryScroller from '@/components/categories/CategoryScroller'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -36,6 +37,20 @@ Builder.registerComponent(ProductCard, {
         { name: 'isHospitality', type: 'boolean' },
         { name: 'isNew', type: 'boolean' },
         { name: 'isBestseller', type: 'boolean' },
+      ],
+    },
+  ],
+})
+
+Builder.registerComponent(CategoryScroller, {
+  name: 'CategoryScroller',
+  inputs: [
+    {
+      name: 'categories',
+      type: 'list',
+      subFields: [
+        { name: 'title', type: 'string' },
+        { name: 'image', type: 'string' },
       ],
     },
   ],
