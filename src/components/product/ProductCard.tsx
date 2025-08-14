@@ -17,6 +17,8 @@ export interface Product {
   isHospitality?: boolean;
   isNew?: boolean;
   isBestseller?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 interface ProductCardProps {
@@ -104,18 +106,20 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
             {product.price}
           </p>
           <div className="space-y-2">
-            <Button 
+            <Button
               className="w-full bg-gold-rich hover:bg-gold-light text-white"
               size="lg"
             >
               {product.price.includes("Contact") ? "Inquire Now" : "Add to Cart"}
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white"
               asChild
             >
-              <Link href={`/shop/${product.id}`}>View Details</Link>
+              <Link href={product.ctaLink || `/shop/${product.id}`}>
+                {product.ctaText || 'View Details'}
+              </Link>
             </Button>
           </div>
         </div>

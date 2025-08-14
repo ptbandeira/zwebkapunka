@@ -2,6 +2,9 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import Hero from '@/components/hero/Hero'
+import CategoryScroller from '@/components/category/CategoryScroller'
+import AboutSection from '@/components/about/AboutSection'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -36,8 +39,45 @@ Builder.registerComponent(ProductCard, {
         { name: 'isHospitality', type: 'boolean' },
         { name: 'isNew', type: 'boolean' },
         { name: 'isBestseller', type: 'boolean' },
+        { name: 'ctaText', type: 'string' },
+        { name: 'ctaLink', type: 'string' },
       ],
     },
+  ],
+})
+
+Builder.registerComponent(Hero, {
+  name: 'Hero',
+  inputs: [
+    { name: 'title', type: 'string' },
+    { name: 'subtitle', type: 'string' },
+    { name: 'backgroundImage', type: 'string' },
+    { name: 'ctaText', type: 'string' },
+    { name: 'ctaLink', type: 'string' },
+  ],
+})
+
+Builder.registerComponent(CategoryScroller, {
+  name: 'CategoryScroller',
+  inputs: [
+    {
+      name: 'categories',
+      type: 'list',
+      subFields: [
+        { name: 'title', type: 'string' },
+        { name: 'image', type: 'string' },
+        { name: 'link', type: 'string' },
+      ],
+    },
+  ],
+})
+
+Builder.registerComponent(AboutSection, {
+  name: 'AboutSection',
+  inputs: [
+    { name: 'title', type: 'string' },
+    { name: 'text', type: 'string', richText: true },
+    { name: 'image', type: 'string' },
   ],
 })
 
