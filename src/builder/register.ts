@@ -2,6 +2,7 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import AboutSection from '@/components/about/AboutSection'
 import CategoryScroller from '@/components/categories/CategoryScroller'
 import Hero from '@/components/hero/Hero'
 import SearchBar from '@/components/navigation/SearchBar'
@@ -11,6 +12,16 @@ import MiniCart from '@/components/navigation/MiniCart'
 Builder.registerComponent(Navigation, { name: 'Navigation' })
 
 Builder.registerComponent(Footer, { name: 'Footer' })
+
+Builder.registerComponent(AboutSection, {
+  name: 'AboutSection',
+  inputs: [
+    { name: 'image', type: 'string', friendlyName: 'Image URL' },
+    { name: 'title', type: 'string' },
+    { name: 'body', type: 'longText' },
+    { name: 'parallax', type: 'boolean', defaultValue: false },
+  ],
+})
 
 Builder.registerComponent(ProductCard, {
   name: 'ProductCard',
