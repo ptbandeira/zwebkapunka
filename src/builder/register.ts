@@ -2,6 +2,7 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import AboutSection from '@/components/about/AboutSection'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -10,6 +11,16 @@ Builder.registerComponent(Navigation, {
 
 Builder.registerComponent(Footer, {
   name: 'Footer',
+})
+
+Builder.registerComponent(AboutSection, {
+  name: 'AboutSection',
+  inputs: [
+    { name: 'image', type: 'string', friendlyName: 'Image URL' },
+    { name: 'title', type: 'string' },
+    { name: 'body', type: 'longText' },
+    { name: 'parallax', type: 'boolean', defaultValue: false },
+  ],
 })
 
 Builder.registerComponent(ProductCard, {
