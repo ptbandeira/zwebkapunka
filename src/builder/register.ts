@@ -3,15 +3,15 @@ import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
 import AboutSection from '@/components/about/AboutSection'
+import CategoryScroller from '@/components/categories/CategoryScroller'
+import Hero from '@/components/hero/Hero'
+import SearchBar from '@/components/navigation/SearchBar'
+import MiniCart from '@/components/navigation/MiniCart'
 
 // Register site-specific components with Builder.io
-Builder.registerComponent(Navigation, {
-  name: 'Navigation',
-})
+Builder.registerComponent(Navigation, { name: 'Navigation' })
 
-Builder.registerComponent(Footer, {
-  name: 'Footer',
-})
+Builder.registerComponent(Footer, { name: 'Footer' })
 
 Builder.registerComponent(AboutSection, {
   name: 'AboutSection',
@@ -52,3 +52,29 @@ Builder.registerComponent(ProductCard, {
   ],
 })
 
+Builder.registerComponent(CategoryScroller, {
+  name: 'CategoryScroller',
+  inputs: [
+    {
+      name: 'categories',
+      type: 'list',
+      subFields: [
+        { name: 'title', type: 'string' },
+        { name: 'image', type: 'string' },
+      ],
+    },
+  ],
+})
+
+Builder.registerComponent(Hero, {
+  name: 'Hero',
+  inputs: [
+    { name: 'image', type: 'string' },
+    { name: 'heading', type: 'string' },
+    { name: 'subheading', type: 'string' },
+  ],
+})
+
+Builder.registerComponent(SearchBar, { name: 'SearchBar' })
+
+Builder.registerComponent(MiniCart, { name: 'MiniCart' })
