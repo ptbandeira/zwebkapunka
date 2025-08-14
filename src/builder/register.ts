@@ -2,6 +2,7 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+import Hero from '@/components/hero/Hero'
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, {
@@ -38,6 +39,15 @@ Builder.registerComponent(ProductCard, {
         { name: 'isBestseller', type: 'boolean' },
       ],
     },
+  ],
+})
+
+Builder.registerComponent(Hero, {
+  name: 'Hero',
+  inputs: [
+    { name: 'image', type: 'string' },
+    { name: 'heading', type: 'string' },
+    { name: 'subheading', type: 'string' },
   ],
 })
 
