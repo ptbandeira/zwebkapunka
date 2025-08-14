@@ -21,6 +21,8 @@ export interface Product {
   isHospitality?: boolean;
   isNew?: boolean;
   isBestseller?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
 import { Heart, Check } from "lucide-react";
 import { useState } from "react";
@@ -148,6 +150,8 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
               {product.price.includes("Contact") ? "Inquire Now" : "Add to Cart"}
             </Button>
             <Button
+
+
               className={`w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white ${
                 inWishlist ? "bg-gold-rich text-white" : ""
               }`}
@@ -161,11 +165,14 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
               {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
             </Button>
             <Button
+main
               variant="outline"
               className="w-full border-gold-rich text-gold-rich hover:bg-gold-rich hover:text-white"
               asChild
             >
-              <Link href={`/shop/${product.id}`}>View Details</Link>
+              <Link href={product.ctaLink || `/shop/${product.id}`}>
+                {product.ctaText || 'View Details'}
+              </Link>
             </Button>
           </div>
         <div className="text-center space-y-2">

@@ -2,11 +2,16 @@ import { Builder } from '@builder.io/react'
 import Navigation from '@/components/navigation/Navigation'
 import Footer from '@/components/footer/Footer'
 import { ProductCard } from '@/components/product/ProductCard'
+codex/import-new-components-for-builder
+import Hero from '@/components/hero/Hero'
+import CategoryScroller from '@/components/category/CategoryScroller'
+import AboutSection from '@/components/about/AboutSection'
 import AboutSection from '@/components/about/AboutSection'
 import CategoryScroller from '@/components/categories/CategoryScroller'
 import Hero from '@/components/hero/Hero'
 import SearchBar from '@/components/navigation/SearchBar'
 import MiniCart from '@/components/navigation/MiniCart'
+main
 
 // Register site-specific components with Builder.io
 Builder.registerComponent(Navigation, { name: 'Navigation' })
@@ -47,11 +52,26 @@ Builder.registerComponent(ProductCard, {
         { name: 'isHospitality', type: 'boolean' },
         { name: 'isNew', type: 'boolean' },
         { name: 'isBestseller', type: 'boolean' },
+        { name: 'ctaText', type: 'string' },
+        { name: 'ctaLink', type: 'string' },
       ],
     },
   ],
 })
 
+codex/import-new-components-for-builder
+Builder.registerComponent(Hero, {
+  name: 'Hero',
+  inputs: [
+    { name: 'title', type: 'string' },
+    { name: 'subtitle', type: 'string' },
+    { name: 'backgroundImage', type: 'string' },
+    { name: 'ctaText', type: 'string' },
+    { name: 'ctaLink', type: 'string' },
+  ],
+})
+
+ main
 Builder.registerComponent(CategoryScroller, {
   name: 'CategoryScroller',
   inputs: [
@@ -61,6 +81,22 @@ Builder.registerComponent(CategoryScroller, {
       subFields: [
         { name: 'title', type: 'string' },
         { name: 'image', type: 'string' },
+codex/import-new-components-for-builder
+        { name: 'link', type: 'string' },
+      ],
+    },
+  ],
+})
+
+Builder.registerComponent(AboutSection, {
+  name: 'AboutSection',
+  inputs: [
+    { name: 'title', type: 'string' },
+    { name: 'text', type: 'string', richText: true },
+    { name: 'image', type: 'string' },
+  ],
+})
+
       ],
     },
   ],
@@ -78,3 +114,4 @@ Builder.registerComponent(Hero, {
 Builder.registerComponent(SearchBar, { name: 'SearchBar' })
 
 Builder.registerComponent(MiniCart, { name: 'MiniCart' })
+main
