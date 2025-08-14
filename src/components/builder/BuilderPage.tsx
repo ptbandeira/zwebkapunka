@@ -1,15 +1,16 @@
-
 import { BuilderComponent, builder } from '@builder.io/react'
 import { cache } from 'react'
 
-// Initialize Builder with environment variable
+// Initialize Builder with environment variable if available
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY
 
-if (!apiKey) {
-  throw new Error('NEXT_PUBLIC_BUILDER_API_KEY is not defined')
+if (apiKey) {
+  builder.init(apiKey)
+} else {
+  console.warn(
+    'NEXT_PUBLIC_BUILDER_API_KEY is not defined. Builder content will not be loaded.'
+  )
 }
-
-builder.init(apiKey)
 
 export interface BuilderPageProps {
   model?: string
@@ -36,7 +37,8 @@ export default async function BuilderPage({
   content,
   urlPath = '/',
 }: BuilderPageProps) {
-  const pageContent = content ?? (await getBuilderContent(model, urlPath))
+  const pageContent =
+    apiKey != null ? content ?? (await getBuilderContent(model, urlPath)) : null
 
   if (!pageContent) {
     return (
