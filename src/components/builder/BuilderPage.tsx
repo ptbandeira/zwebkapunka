@@ -1,5 +1,6 @@
 'use client'
 
+import '@/builder/register'
 import { useState, useEffect } from 'react'
 import { BuilderComponent } from '@builder.io/react'
 import builder from '@/lib/builder/client'
