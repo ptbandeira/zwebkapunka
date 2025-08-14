@@ -1,7 +1,6 @@
-'use client'
 
-import { useState, useEffect } from 'react'
 import { BuilderComponent, builder } from '@builder.io/react'
+import { cache } from 'react'
 
 // Initialize Builder with environment variable
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY
@@ -12,49 +11,32 @@ if (!apiKey) {
 
 builder.init(apiKey)
 
-interface BuilderPageProps {
+export interface BuilderPageProps {
   model?: string
+  /**
+   * Optional pre-fetched content. When provided, the component will render
+   * this content directly and avoid an additional network request.
+   */
   content?: any
+  /**
+   * Path to fetch content for. Defaults to '/'.
+   */
+  urlPath?: string
 }
 
-export default function BuilderPage({ model = 'page', content }: BuilderPageProps) {
-  const [pageContent, setPageContent] = useState(content)
-  const [loading, setLoading] = useState(!content)
-
-  useEffect(() => {
-    if (content) {
-      setPageContent(content)
-      setLoading(false)
-      return
-    }
-
-    const fetchContent = async () => {
-      try {
-        const result = await builder.get(model, {
-          url: window.location.pathname,
-        }).toPromise()
-        
-        setPageContent(result)
-      } catch (error) {
-        console.error('Error fetching Builder content:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchContent()
-  }, [model, content])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading content...</p>
-        </div>
-      </div>
-    )
+// Cache Builder content fetches to preserve performance across re-renders
+export const getBuilderContent = cache(
+  async (model: string, urlPath: string) => {
+    return await builder.get(model, { url: urlPath }).toPromise()
   }
+)
+
+export default async function BuilderPage({
+  model = 'page',
+  content,
+  urlPath = '/',
+}: BuilderPageProps) {
+  const pageContent = content ?? (await getBuilderContent(model, urlPath))
 
   if (!pageContent) {
     return (
