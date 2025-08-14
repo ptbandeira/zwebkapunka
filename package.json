@@ -14,8 +14,8 @@
     "sanity": "sanity"
   },
   "dependencies": {
-    "@builder.io/react": "^3.2.12",
-    "@builder.io/sdk": "^2.2.9",
+    "@builder.io/react": "^8.2.6",
+    "@builder.io/sdk": "^6.1.2",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
@@ -75,7 +75,7 @@
     "react-hook-form": "^7.60.0",
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^3.0.3",
-    "react-syntax-highlighter": "^5.8.0",
+    "react-syntax-highlighter": "^15.6.1",
     "recharts": "^2.15.4",
     "sanity": "^4.4.0",
     "sharp": "^0.34.3",
