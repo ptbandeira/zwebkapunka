@@ -1,27 +1,3 @@
-import Image from 'next/image'
-
-interface AboutSectionProps {
-  title: string
-  text: string
-  image?: string
-}
-
-export default function AboutSection({ title, text, image }: AboutSectionProps) {
-  return (
-    <section className="grid md:grid-cols-2 gap-8 items-center w-full">
-      <div>
-        <h2 className="text-3xl font-serif mb-4">{title}</h2>
-        <p className="text-muted-foreground whitespace-pre-line">{text}</p>
-      </div>
-      {image && (
-        <div className="relative w-full h-64">
-          <Image src={image} alt={title} fill className="object-cover rounded" />
-        </div>
-      )}
-    </section>
-  )
-}
-
 'use client'
 
 import Image from 'next/image'
@@ -35,12 +11,7 @@ interface AboutSectionProps {
   parallax?: boolean
 }
 
-export default function AboutSection({
-  image,
-  title,
-  body,
-  parallax = false,
-}: AboutSectionProps) {
+export default function AboutSection({ image, title, body, parallax = false }: AboutSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const textInView = useInView(textRef, { once: true, margin: '-100px' })
@@ -65,4 +36,3 @@ export default function AboutSection({
     </section>
   )
 }
-main

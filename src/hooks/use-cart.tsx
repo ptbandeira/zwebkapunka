@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react";
-import type { Product } from "@/components/product/ProductCard";
+import type { Product } from "@/types/product";
 
 export interface CartItem extends Product {
   quantity: number;
