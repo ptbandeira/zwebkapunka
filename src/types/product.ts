@@ -13,4 +13,6 @@ export interface Product {
   isHospitality?: boolean;
   isNew?: boolean;
   isBestseller?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
